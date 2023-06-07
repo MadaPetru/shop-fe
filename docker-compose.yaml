@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  shop_fe:
+    image: shop_fe
+    container_name: shop_fe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:80'
+    networks:
+      - shop_fe
+networks:
+  shop_fe:
+    driver: bridge
+    name: shop_fe

@@ -1,0 +1,41 @@
+<section class="panel">
+  <div class="panel-body">
+    <div class="col-md-6">
+      <ng-container *ngIf="product?.images && product.images.length > 0">
+        <div class="pro-img-details">
+          <img [src]="'data:image/jpg;base64,' + selectedImage" [height]="500" [width]="500" alt="">
+        </div>
+      </ng-container>
+      <div class="pro-img-list">
+        <ng-container *ngIf="product?.images && product.images.length > 0">
+          <a *ngFor="let image of product.images;">
+            <a (click)="selectImageForProduct(image)">
+              <img [src]="'data:image/jpg;base64,' + image" [height]="115" [width]="100" alt="">
+            </a>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="pro-d-title">
+        <a class="">
+          {{product.name}}
+        </a>
+      </h4>
+      <p>
+        Praesent ac condimentum felis. Nulla at nisl orci, at dignissim dolor, The best product descriptions address
+        your ideal buyer directly and personally. The best product descriptions address your ideal buyer directly
+        and personally.
+      </p>
+      <div class="m-bot15"><strong>Price : </strong> <span>${{product.price}}</span></div>
+<!--      <div class="form-group">-->
+<!--        <label>Quantity:</label>-->
+<!--        <input type="submit" [value]=product.quantity class="form-control quantity" [disabled]="true">-->
+<!--      </div>-->
+<!--      <p>-->
+<!--        <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart-->
+<!--        </button>-->
+<!--      </p> wnat to deploy it faster and it is unnecesarly features-->
+    </div>
+  </div>
+</section>
