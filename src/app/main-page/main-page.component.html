@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    Shop
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background: #b65720;">
+<ul class="navbar-list-horizontally">
+  <li style="float: left"><a class="link-of-an-element-list">Home</a></li>
+  <li class="element-of-list-to-start-from-left">
+    <a class="link-of-an-element-list" href="https://www.instagram.com/_gorillashop_/" target="_blank" rel="noopener">
+      <i class="fa fa-instagram"></i>
+      _gorillashop_
+    </a>
+  </li>
+  <li class="element-of-list-to-start-from-left" *ngIf="!isProduction"><a class="link-of-an-element-list"
+                                                                          (click)="openCreateModal()">Create</a></li>
+</ul>
+<div style="background: #b65720;">
+  <div class="row-div-modal">
+    <div class="div-modal-section-position-in-line" *ngFor="let product of products">
+      <a class="see-details-link" (click)="getProductDetails(product)">
+        <ng-container *ngIf="product?.images && product.images.length > 0">
+          <img
+            [src]="'data:image/jpg;base64,' + product.images[0]"
+            height="200" width="100%" alt=""/>
+        </ng-container>
+        <div class="parent-container-position-center">
+          <h4 class="product-name">
+            <b>{{product.name}}</b>
+          </h4>
+
+          <p style="color: white">${{product.price}}</p>
+          <div *ngIf="!isProduction">
+            <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+               data-original-title="Edit" (click)="openEditModal(product)"><i class="fa fa-pencil"></i> </a>
+            <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip"
+               data-original-title="Delete" (click)="openDeleteModal(product)"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="app-pagination">
+    <app-pagination [collectionSize]="totalElements" [totalPages]="totalPages" [currentPage]="currentPage">
+    </app-pagination>
+  </div>
+</div>
+</body>
+</html>

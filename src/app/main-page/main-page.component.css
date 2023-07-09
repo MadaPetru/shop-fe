@@ -1,0 +1,115 @@
+.div-modal-section-position-in-line{
+  /* Add any desired styles for the boxes */
+  flex: 0 0 calc(16.6% - 25px); /* Adjust the width as needed */
+  box-sizing: border-box;
+  border: 1px solid  #b65720;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+  background: #b65720;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.div-modal-section-position-in-line img {
+  border-radius: 5px;
+}
+
+.div-modal-section-position-in-line h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.div-modal-section-position-in-line a {
+  text-decoration: none;
+  color: #333;
+}
+
+.div-modal-section-position-in-line p {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.div-modal-section-position-in-line .btn {
+  margin-top: 5px;
+}
+
+.parent-container-position-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('background.jpg');
+  background-size: 100% 100%;
+}
+.row-div-modal {
+  display: flex;
+  flex-flow: wrap; /*by default in display flex*/
+}
+
+.navbar-list-horizontally {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.element-of-list-to-start-from-left {
+  float: left;
+}
+
+.link-of-an-element-list {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.element-of-list-to-start-from-left  a:hover {
+  background-color: #111;
+}
+
+.modal-width-and-height{
+  width: 100px;
+  height: 340px;
+  min-width: 200px;
+  min-height: 340px;
+}
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.product-name{
+  color: white !important;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.see-details-link:active {
+  color: #FF0000; /* Change the text color when the link is pressed */
+  text-decoration: underline; /* Add underline when the link is pressed */
+  font-weight: bold; /* Increase the font weight when the link is pressed */
+  /* Add any additional styles you want for the pressed state */
+}
+
+.see-details-link:hover {
+  cursor: pointer; /* Change the cursor to a hand pointer when hovering over the link */
+  color: white; /* Change the text color when the link is hovered */
+  text-decoration: none; /* Remove underline when the link is hovered */
+}
+
+@media screen and (max-width: 600px) {
+  .div-modal-section-position-in-line {
+    flex-basis: 50%; /* Change the width to 50% when the viewport width is 600px or less */
+  }
+}

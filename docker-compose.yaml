@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  shop_fe_admin:
+    image: caleamare/shop_fe_admin:v1
+    container_name: shop_fe_admin
+    build:
+      context: .
+      dockerfile: administrator.Dockerfile
+    ports:
+      - '4200:80'
+    networks:
+      - shop_fe_admin
+  shop_fe_production:
+    image: caleamare/shop_fe_production:v1
+    container_name: shop_fe_production
+    build:
+      context: .
+      dockerfile: production.Dockerfile
+    ports:
+      - '4201:81'
+    networks:
+      - shop_fe_production
+networks:
+  shop_fe_production:
+    driver: bridge
+    name: shop_fe_production
+  shop_fe_admin:
+    driver: bridge
+    name: shop_fe_admin

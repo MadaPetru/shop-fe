@@ -25,11 +25,12 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/shoes-site'),
+      dir: require('path').join(__dirname, './coverage/gorrila_shop'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        {type: 'html'},
+        {type: 'text-summary'},
+        {type: 'lcov'}
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -37,8 +38,21 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'ChromeHeadless'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--no-sandbox',
+          '--disable-software-rasterizer',
+          '--remote-debugging-port=9222'
+          // ... other Chrome flags if needed
+        ],
+      },
+    },
   });
 };

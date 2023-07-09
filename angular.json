@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shoes-site": {
+    "gorrila_shop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shoes-site",
+            "outputPath": "dist/gorrila_shop",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,11 +27,28 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
+            "local": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [],
+              "outputHashing": "all"
+            },
             "production": {
               "budgets": [
                 {
@@ -62,24 +79,27 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "shoes-site:build:production"
+              "browserTarget": "gorrila_shop:build:production"
             },
             "development": {
-              "browserTarget": "shoes-site:build:development"
+              "browserTarget": "gorrila_shop:build:development"
+            },
+            "local": {
+              "browserTarget": "gorrila_shop:build:local"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "local"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shoes-site:build"
+            "browserTarget": "gorrila_shop:build"
           }
         },
         "test": {
@@ -94,6 +114,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "shoes-site"
+  "defaultProject": "gorrila_shop"
 }
