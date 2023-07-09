@@ -1,0 +1,34 @@
+<nav *ngIf="collectionSize!=0">
+  <label for="itemsPerPage">Items per page:</label>
+  <select id="itemsPerPage" (change)="searchWithDifferentPageSize()" [(ngModel)]="pageSize">
+    <option value="10">10</option>
+    <option value="50" >50</option>
+    <option value="100" >100</option>
+  </select>
+  <ul [class]="small ? 'pagination pagination-sm' : 'pagination'">
+    <!-- first button -->
+    <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'" *ngIf="firstLastButtons">
+      <button class="page-link" (click)="selectPageNumber(1)">««</button>
+    </li>
+    <!-- previous button -->
+    <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'" *ngIf="nextPreviousButtons">
+      <button class="page-link" (click)="previous()">«</button>
+    </li>
+    <!-- page numbers -->
+    <ng-container *ngFor="let p of pages; index as i">
+      <li *ngIf="i + 1 >= (currentPage - maxSize) && i + 1 <= (currentPage + maxSize)"
+          [class]="currentPage === (i  + 1) ? 'page-item active' : 'page-item'">
+        <button class="page-link" (click)="selectPageNumber(i + 1)">{{i + 1}}</button>
+      </li>
+    </ng-container>
+    <!-- next button -->
+    <li [class]="currentPage === pages.length ? 'page-item disabled' : 'page-item'"
+        *ngIf="nextPreviousButtons">
+      <button class="page-link" (click)="next()">»</button>
+    </li>
+    <!-- last button -->
+    <li [class]="currentPage === pages.length ? 'page-item disabled' : 'page-item'" *ngIf="firstLastButtons">
+      <button class="page-link" (click)="selectPageNumber(pages.length)">»»</button>
+    </li>
+  </ul>
+</nav>

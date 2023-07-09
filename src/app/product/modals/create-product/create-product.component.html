@@ -1,0 +1,44 @@
+<form #addForm="ngForm" (ngSubmit)="onAdd(addForm)" id="addForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required
+           pattern="[A-Za-z0-9\s]+">
+    <div *ngIf="addForm.controls.name?.invalid && (addForm.controls.name?.dirty || addForm.controls.name?.touched)"
+         class="text-danger">
+      Please enter a valid name.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" ngModel name="price" class="form-control" id="price" placeholder="Price" required
+           pattern="[1-9][0-9]*">
+    <div *ngIf="addForm.controls.price?.invalid && (addForm.controls.price?.dirty || addForm.controls.price?.touched)">
+      <small class="text-danger">Invalid price. Please enter a valid number.</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input type="text" ngModel name="quantity" class="form-control" id="quantity" placeholder="Quantity" required
+           pattern="[1-9][0-9]*">
+    <div
+      *ngIf="addForm.controls.quantity?.invalid && (addForm.controls.quantity?.dirty || addForm.controls.quantity?.touched)">
+      <small class="text-danger">Invalid quantity. Please enter a valid number.</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="images">Images</label>
+    <input type="file" class="file-input" ngModel name="upload" id="images"
+           [accept]="requiredFileType"
+           (change)="onFileSelected($event)" multiple required>
+    <div
+      *ngIf="addForm.controls.upload?.invalid && (addForm.controls.upload?.dirty || addForm.controls.upload?.touched)">
+      <small class="text-danger">Please choose images for product.</small>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal" (click)="close()">
+      Close
+    </button>
+    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>

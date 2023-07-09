@@ -1,0 +1,13 @@
+<div>
+  <div>
+    <h5 class="modal-title" id="deleteModelLabel">Delete Product</h5>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete product {{deleteProduct?.name}}?</p>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">No</button>
+      <button type=button (click)="onDelete(deleteProduct?.id)" class="btn btn-danger" data-dismiss="modal">Yes
+      </button>
+    </div>
+  </div>
+</div>
