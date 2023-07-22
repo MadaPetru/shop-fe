@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<body>
+<div class="login-container">
+  <img class="component-child" alt="" src="assets/rectangle-orange.png"/>
+  <img class="image-logo-for-login-modal" alt="" src="assets/logo-image-for-login-modal.png"/>
+  <div>
+    <h2>
+      <b class="login">Login</b>
+    </h2>
+  </div>
+  <form #loginForm="ngForm">
+    <div>
+      <b class="username">Username</b>
+      <input ngModel name="username" class="username-input" type="text" placeholder="Enter your username" required>
+    </div>
+
+    <div>
+      <b class="password">Password</b>
+      <input ngModel name="password" class="password-input" type="password" placeholder="Enter your password" required>
+    </div>
+
+    <div>
+      <b class="text-bold-login-button">Login</b>
+      <button [disabled]="loginForm.invalid" class="login-button" type="button" (click)="onLogin(loginForm)">
+        Login
+      </button>
+    </div>
+  </form>
+</div>
+</body>

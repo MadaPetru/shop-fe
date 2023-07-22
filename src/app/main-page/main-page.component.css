@@ -60,6 +60,10 @@
 .element-of-list-to-start-from-left {
   float: left;
 }
+.element-of-list-to-start-from-right {
+  float: right;
+}
+
 
 .link-of-an-element-list {
   display: block;

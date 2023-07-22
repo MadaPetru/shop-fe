@@ -45,4 +45,10 @@ describe('ApisCallerService', () => {
 
     expect(mockHttpClient.post).toHaveBeenCalled();
   });
+
+  it('login should call login api', () => {
+    service.loginUser(request);
+
+    expect(mockHttpClient.post).toHaveBeenCalled();
+  });
 });

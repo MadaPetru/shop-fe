@@ -8,6 +8,8 @@ import {UpdateProductRequest} from "./product/dto/request/update-product-request
 import {SearchProductsPageableRequest} from "./product/dto/request/search-products-pageable-request";
 import {SearchPageableResponse} from "./product/dto/response/search-pageable-response";
 import {ProductResponse} from "./product/dto/response/product-response";
+import {UserLoginRequest} from "./common/dto/request/user-login-request";
+import {UserLoginResponse} from "./common/dto/request/user-login-response";
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +19,15 @@ export class ApisCallerService {
   constructor(private http: HttpClient) {
   }
 
-  saveProduct(request: CreateProductRequest):Observable<ProductResponse> {
+  loginUser(request: UserLoginRequest): Observable<UserLoginResponse> {
+    return this.http.post<UserLoginResponse>(environment.url + '/users/login', request);
+  }
+
+  saveProduct(request: CreateProductRequest): Observable<ProductResponse> {
     return this.http.post<ProductResponse>(environment.url + '/products', request);
   }
 
-  updateProduct(request: UpdateProductRequest):Observable<ProductResponse> {
+  updateProduct(request: UpdateProductRequest): Observable<ProductResponse> {
     return this.http.put<ProductResponse>(environment.url + '/products', request);
   }
 
@@ -29,7 +35,7 @@ export class ApisCallerService {
     return this.http.post<any>(environment.url + '/products/search', request);
   }
 
-  deleteProduct(id: string):Observable<boolean> {
-   return  this.http.delete<boolean>(environment.url + '/products/' + id);
+  deleteProduct(id: string): Observable<boolean> {
+    return this.http.delete<boolean>(environment.url + '/products/' + id);
   }
 }

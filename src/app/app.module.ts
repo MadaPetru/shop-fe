@@ -7,15 +7,18 @@ import {ProductDetailComponent} from './product/modals/product-detail/product-de
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {CreateProductComponent} from './product/modals/create-product/create-product.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {UpdateProductComponent} from './product/modals/update-product/update-product.component';
 import {DeleteProductComponent} from './product/modals/delete-product/delete-product.component';
 import {PaginationComponent} from './pagination/pagination.component';
+import {LoginModalComponent} from './login/login-modal/login-modal.component';
+import {AuthInterceptor} from "./auth-interceptor";
+import { ErrorModalComponent } from './error-modal/error-modal.component';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import {PaginationComponent} from './pagination/pagination.component';
     CreateProductComponent,
     UpdateProductComponent,
     DeleteProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginModalComponent,
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +45,9 @@ import {PaginationComponent} from './pagination/pagination.component';
       {path: '**', component: MainPageComponent}
     ]),
     FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
