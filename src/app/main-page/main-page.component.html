@@ -16,8 +16,10 @@
       _gorillashop_
     </a>
   </li>
-  <li class="element-of-list-to-start-from-left" *ngIf="!isProduction"><a class="link-of-an-element-list"
-                                                                          (click)="openCreateModal()">Create</a></li>
+  <li class="element-of-list-to-start-from-left" *ngIf="isAdministrator"><a class="link-of-an-element-list"
+                                                                             (click)="openCreateModal()">Create</a></li>
+  <li class="element-of-list-to-start-from-right" *ngIf="isUserNotLoggedIn"><a class="link-of-an-element-list"
+                                                                              (click)="openLoginModal()">Login</a></li>
 </ul>
 <div style="background: #b65720;">
   <div class="row-div-modal">
@@ -28,20 +30,21 @@
             [src]="'data:image/jpg;base64,' + product.images[0]"
             height="200" width="100%" alt=""/>
         </ng-container>
-        <div class="parent-container-position-center">
+      </a>
+      <div class="parent-container-position-center">
+        <a class="see-details-link" (click)="getProductDetails(product)">
           <h4 class="product-name">
             <b>{{product.name}}</b>
           </h4>
-
           <p style="color: white">${{product.price}}</p>
-          <div *ngIf="!isProduction">
-            <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
-               data-original-title="Edit" (click)="openEditModal(product)"><i class="fa fa-pencil"></i> </a>
-            <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip"
-               data-original-title="Delete" (click)="openDeleteModal(product)"><i class="fa fa-times"></i></a>
-          </div>
+        </a>
+        <div *ngIf="isAdministrator">
+          <a class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+             data-original-title="Edit" (click)="openEditModal(product)"><i class="fa fa-pencil"></i> </a>
+          <a class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip"
+             data-original-title="Delete" (click)="openDeleteModal(product)"><i class="fa fa-times"></i></a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
   <div class="app-pagination">

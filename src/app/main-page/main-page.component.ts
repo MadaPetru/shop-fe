@@ -11,7 +11,7 @@ import {SearchProductsPageableRequest} from "../product/dto/request/search-produ
 import {PageableRequest} from "../common/dto/request/pageable-request";
 import {PaginationTransferService} from "../pagination/service/pagination-transfer.service";
 import {SearchPageableResponse} from "../product/dto/response/search-pageable-response";
-import {environment} from "../../environments/environment";
+import {LoginModalComponent} from "../login/login-modal/login-modal.component";
 
 @Component({
   selector: 'app-main-page',
@@ -30,10 +30,10 @@ export class MainPageComponent implements OnInit {
   totalPages: number = 0;
   currentPage: number = 0;
   pageSize: number = 10;
-  isProduction: boolean = false;
+  isAdministrator: boolean = localStorage.getItem('isAdministrator') == 'true'
+  isUserNotLoggedIn: boolean = localStorage.getItem('isUserLoggedIn') != 'true';
 
   ngOnInit(): void {
-    this.isProduction = environment.production;
     this.searchProductPageableRequest = this.buildDefaultSearchProductsPageableRequest();
     this.searchProductsPageable(this.searchProductPageableRequest);
   }
@@ -44,7 +44,7 @@ export class MainPageComponent implements OnInit {
         (response: SearchPageableResponse<Product>) => {
           this.copyValuesFromResponse(response);
         },
-        (error:Error)=>{
+        (error: Error) => {
           console.log(error.message);
         }
       );
@@ -58,6 +58,23 @@ export class MainPageComponent implements OnInit {
       if (response != null) {
         this.createProduct(response);
       }
+    });
+  }
+
+  openLoginModal(): void {
+
+    let loginPageComponentMatDialogRef = this.dialogRef.open(LoginModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      minWidth: '750px',
+      minHeight: '400px'
+    });
+    loginPageComponentMatDialogRef.afterClosed().subscribe((isAdmin: boolean) => {
+      let value = '' + isAdmin;
+      localStorage.setItem('isAdministrator', value);
+      localStorage.setItem('isUserLoggedIn', value);
+      this.isUserNotLoggedIn = !isAdmin;
+      this.isAdministrator = isAdmin;
     });
   }
 

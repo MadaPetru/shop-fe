@@ -1,0 +1,22 @@
+p {
+  font-size: 18px;
+  color: black;
+  font-family: 'Georgia', serif;
+  line-height: 1.5;
+}
+
+
+button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: darkorange;
+}

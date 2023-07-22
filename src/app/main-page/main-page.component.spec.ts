@@ -13,6 +13,7 @@ import {CreateProductComponent} from "../product/modals/create-product/create-pr
 import {UpdateProductComponent} from "../product/modals/update-product/update-product.component";
 import {DeleteProductComponent} from "../product/modals/delete-product/delete-product.component";
 import {ProductDetailComponent} from "../product/modals/product-detail/product-detail.component";
+import {LoginModalComponent} from "../login/login-modal/login-modal.component";
 import any = jasmine.any;
 
 
@@ -178,6 +179,21 @@ describe('MainPageComponent', () => {
         quantity: entityToBeUpdated.quantity,
         id: entityToBeUpdated.id
       }
+    });
+    expect(mockDialogRef.afterClosed).toHaveBeenCalledOnceWith();
+  });
+
+  it('open login modal should open the modal correctly', () => {
+    spyOn(mockDialog, "open").and.returnValue(mockDialogRef);
+    mockDialogRef.afterClosed.and.returnValue(of(null));
+
+    component.openLoginModal();
+
+    expect(mockDialog.open).toHaveBeenCalledOnceWith(LoginModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      minWidth: '750px',
+      minHeight: '400px'
     });
     expect(mockDialogRef.afterClosed).toHaveBeenCalledOnceWith();
   });

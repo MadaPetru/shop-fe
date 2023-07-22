@@ -1,0 +1,3 @@
+export enum GrantedRoles {
+  NORMAL_USER = "NORMAL_USER", ADMINISTRATOR = "ADMINISTRATOR"
+}
