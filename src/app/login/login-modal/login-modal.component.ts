@@ -4,6 +4,7 @@ import {UserLoginResponse} from "../../common/dto/request/user-login-response";
 import {GrantedRoles} from "../../common/dto/request/granted-roles";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ErrorModalComponent} from "../../error-modal/error-modal.component";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login-page',
@@ -29,8 +30,9 @@ export class LoginModalComponent {
         localStorage.setItem('jwt', jwt);
         this.dialogRef.close(isAdmin);
       },
-      (response: Error) => {
+      (response: HttpErrorResponse) => {
         let errorMessage = "Wrong password or username!";
+        if (response.status == 0 || response.status == 429) errorMessage = "You have exceed the number of retries!";
         this.dialog.open(ErrorModalComponent, {
           data: {
             errorMessage: errorMessage
