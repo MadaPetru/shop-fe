@@ -7,7 +7,6 @@ COPY package*.json ./
 RUN npm install --ignore-scripts
 COPY angular.json ./
 COPY src ./src
-COPY background.jpg ./
 COPY tsconfig*.json ./
 RUN npm run build  --  --output-path=dist/gorrila_shop --configuration=$ENV
 # Serve Application using Nginx Server

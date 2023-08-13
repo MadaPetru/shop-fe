@@ -166,11 +166,11 @@ body {
   background-color: #fff;
   width: 100%;
   height: 353px;
-  overflow: hidden;
   text-align: left;
   font-size: var(--font-size-6xl);
   color: var(--color-black);
   font-family: var(--font-inter);
+  overflow: auto;
 }
 
 .login-container-1 {
@@ -188,4 +188,20 @@ body {
   position: absolute;
   top: calc(39px - (2.01px / 2) - (19px / 2));
   left: calc(50% - (74.01px / 2));
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .login-button,
+  .username-input,
+  .password-input {
+    position: static;
+    left: auto;
+    width: 100%;
+    font-size: 12px;
+  }
 }
