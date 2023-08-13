@@ -1,15 +1,14 @@
 version: '3.8'
 services:
   shop_fe_local:
-    image: caleamare/shop_fe_local:v1
-    container_name: shop_fe_local
+    container_name: shop_fe
     build:
       context: .
     ports:
       - '4200:80'
     networks:
-      - shop_fe_local
+      - shop_fe
 networks:
-  shop_fe_local:
+  shop_fe:
     driver: bridge
-    name: shop_fe_local
+    name: shop_fe
