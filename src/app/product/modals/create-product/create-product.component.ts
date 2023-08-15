@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
 import {NgForm} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {finalize} from "rxjs/operators";
@@ -8,6 +7,7 @@ import {CreateProductRequest} from "../../dto/request/create-product-request";
 import {ProductConverter} from "../../product-converter";
 import {ProductResponse} from "../../dto/response/product-response";
 import {ImageService} from "../../../image/service/image.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-product',

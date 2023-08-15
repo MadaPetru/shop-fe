@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LoginModalComponent} from './login-modal.component';
 import {ApisCallerService} from "../../apis-caller.service";
-import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog, MatLegacyDialogModule as MatDialogModule, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {UserLoginRequest} from "../../common/dto/request/user-login-request";

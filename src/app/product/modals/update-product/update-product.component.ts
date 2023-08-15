@@ -1,5 +1,4 @@
 import {Component, Inject, Input} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
 import {ApisCallerService} from "../../../apis-caller.service";
 import {NgForm} from "@angular/forms";
@@ -9,6 +8,7 @@ import {Product} from "../../entity/product";
 import {ProductResponse} from "../../dto/response/product-response";
 import {ProductConverter} from "../../product-converter";
 import {ImageService} from "../../../image/service/image.service";
+import {MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-product-modal',

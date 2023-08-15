@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {ApisCallerService} from "../../apis-caller.service";
 import {UserLoginResponse} from "../../common/dto/request/user-login-response";
 import {GrantedRoles} from "../../common/dto/request/granted-roles";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ErrorModalComponent} from "../../error-modal/error-modal.component";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login-page',

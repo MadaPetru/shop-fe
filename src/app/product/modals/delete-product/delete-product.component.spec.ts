@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DeleteProductComponent} from './delete-product.component';
 import {FormsModule} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {ApisCallerService} from "../../../apis-caller.service";
 import {HttpClientModule} from "@angular/common/http";
 import {of, throwError} from "rxjs";
