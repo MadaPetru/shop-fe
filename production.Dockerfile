@@ -1,6 +1,6 @@
 FROM node:16-alpine AS build
 
-ARG ENV
+ARG ENV='production'
 WORKDIR /app
 
 COPY package*.json ./
