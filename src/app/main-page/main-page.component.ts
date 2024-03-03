@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateProductComponent} from "../product/modals/create-product/create-product.component";
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../product/entity/product";
@@ -12,6 +11,7 @@ import {PageableRequest} from "../common/dto/request/pageable-request";
 import {PaginationTransferService} from "../pagination/service/pagination-transfer.service";
 import {SearchPageableResponse} from "../product/dto/response/search-pageable-response";
 import {LoginModalComponent} from "../login/login-modal/login-modal.component";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-main-page',
